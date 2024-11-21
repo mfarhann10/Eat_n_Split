@@ -2,7 +2,7 @@ import Button from "./Button";
 
 function FormAddFriend() {
   return (
-    <form className=" bg-orange-50 form-add-friend space-y-3">
+    <form className=" bg-orange-50 form-add-friend">
       {/* Input Friend Name */}
       <div className="space-y-2">
         <label className="block text-lg font-medium text-gray-700">
@@ -28,7 +28,7 @@ function FormAddFriend() {
       </div>
 
       {/* Button */}
-      <div className="flex flex-row-reverse">
+      <div className="flex flex-row-reverse pt-5">
         <Button>Add</Button>
       </div>
     </form>
