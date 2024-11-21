@@ -4,7 +4,7 @@ import Friend from "./Friend";
 function FriendList() {
   const friends = initialFriends;
   return (
-    <ul className="flex flex-col gap-6">
+    <ul className="flex flex-col gap-4">
       {friends.map((friend) => (
         <Friend key={friend.id} friend={friend} />
       ))}
