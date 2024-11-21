@@ -1,3 +1,5 @@
+import Button from "./Button";
+
 /* eslint-disable react/prop-types */
 function Friend({ friend }) {
   return (
@@ -27,9 +29,7 @@ function Friend({ friend }) {
           <p className="text-gray-500">You and {friend.name} are even</p>
         )}
       </div>
-      <button className="px-4 py-2 text-sm bg-orange-400 text-white rounded-full shadow-md hover:bg-orange-500 transition">
-        Select
-      </button>
+      <Button>Select</Button>
     </li>
   );
 }
