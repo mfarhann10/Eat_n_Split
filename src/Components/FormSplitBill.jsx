@@ -1,6 +1,12 @@
+import { useState } from "react";
 import Button from "./Button";
 /* eslint-disable react/prop-types */
+/* eslint-disable react/no-unescaped-entities */
 function FormSplitBill({ selectedFriend }) {
+  const [bill, setBill] = useState("");
+  const [paidByuser, setPaidByUser] = useState("");
+  const paidByFriend = bill ? bill - paidByuser : "";
+  const [whoIsPaying, setWhoIsPaying] = useState("user");
   return (
     <form className="bg-orange-50 form-split-bill">
       <h2 className="col-span-2 text-2xl font-bold uppercase tracking-wide text-gray-700 mb-4">
@@ -14,6 +20,8 @@ function FormSplitBill({ selectedFriend }) {
         <input
           type="text"
           className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-orange-500 focus:outline-none"
+          value={bill}
+          onChange={(e) => setBill(Number(e.target.value))}
         />
       </div>
 
@@ -24,6 +32,14 @@ function FormSplitBill({ selectedFriend }) {
         <input
           type="text"
           className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-orange-500 focus:outline-none"
+          value={paidByuser}
+          onChange={(e) =>
+            setPaidByUser(
+              Number(e.target.value) > bill
+                ? paidByuser
+                : Number(e.target.value)
+            )
+          }
         />
       </div>
 
@@ -34,6 +50,7 @@ function FormSplitBill({ selectedFriend }) {
         <input
           type="text"
           className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-orange-500 focus:outline-none"
+          value={paidByFriend}
           disabled
         />
       </div>
@@ -45,7 +62,11 @@ function FormSplitBill({ selectedFriend }) {
         >
           Who is paying the bill
         </label>
-        <select className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-orange-500 focus:outline-none bg-white text-gray-700">
+        <select
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-orange-500 focus:outline-none bg-white text-gray-700"
+          value={whoIsPaying}
+          onChange={(e) => setWhoIsPaying(e.target.value)}
+        >
           <option value="user">You</option>
           <option value="friend">{selectedFriend.name}</option>
         </select>
