@@ -1,9 +1,14 @@
 import Button from "./Button";
 
 /* eslint-disable react/prop-types */
-function Friend({ friend }) {
+function Friend({ friend, onSelection, selectedFriend }) {
+  const isSelected = selectedFriend?.id === friend.id;
+  const selected =
+    "flex items-center gap-4 bg-orange-100 shadow-md rounded-lg p-4 ";
+  const notSelected =
+    "flex items-center gap-4 bg-white shadow-md rounded-lg p-4";
   return (
-    <li className="flex items-center gap-4 bg-white shadow-md rounded-lg p-4 hover:bg-orange-100 transition duration-200">
+    <li className={isSelected ? selected : notSelected}>
       <img
         src={friend.image}
         alt={friend.name}
@@ -29,7 +34,9 @@ function Friend({ friend }) {
           <p className="text-gray-500">You and {friend.name} are even</p>
         )}
       </div>
-      <Button>Select</Button>
+      <Button onClick={() => onSelection(friend)}>
+        {isSelected ? "Close" : "Select"}
+      </Button>
     </li>
   );
 }

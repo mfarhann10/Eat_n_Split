@@ -1,10 +1,10 @@
 import Button from "./Button";
-
-function FormSplitBill() {
+/* eslint-disable react/prop-types */
+function FormSplitBill({ selectedFriend }) {
   return (
     <form className="bg-orange-50 form-split-bill">
       <h2 className="col-span-2 text-2xl font-bold uppercase tracking-wide text-gray-700 mb-4">
-        Split a bill with X
+        Split a bill with {selectedFriend.name}
       </h2>
 
       <div className="space-y-2">
@@ -29,7 +29,7 @@ function FormSplitBill() {
 
       <div className="space-y-2">
         <label className="block text-lg font-medium text-gray-700">
-          X's expense
+          {selectedFriend.name}'s expense
         </label>
         <input
           type="text"
@@ -47,7 +47,7 @@ function FormSplitBill() {
         </label>
         <select className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-orange-500 focus:outline-none bg-white text-gray-700">
           <option value="user">You</option>
-          <option value="friend">X</option>
+          <option value="friend">{selectedFriend.name}</option>
         </select>
       </div>
 
