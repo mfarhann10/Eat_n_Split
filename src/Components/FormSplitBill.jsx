@@ -2,13 +2,21 @@ import { useState } from "react";
 import Button from "./Button";
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
-function FormSplitBill({ selectedFriend }) {
+function FormSplitBill({ selectedFriend, onSplitBill }) {
   const [bill, setBill] = useState("");
   const [paidByuser, setPaidByUser] = useState("");
   const paidByFriend = bill ? bill - paidByuser : "";
   const [whoIsPaying, setWhoIsPaying] = useState("user");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (!bill || !paidByuser) return;
+
+    onSplitBill(whoIsPaying === "user" ? paidByuser : -paidByFriend);
+  }
   return (
-    <form className="bg-orange-50 form-split-bill">
+    <form className="bg-orange-50 form-split-bill" onSubmit={handleSubmit}>
       <h2 className="col-span-2 text-2xl font-bold uppercase tracking-wide text-gray-700 mb-4">
         Split a bill with {selectedFriend.name}
       </h2>
