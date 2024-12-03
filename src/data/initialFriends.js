@@ -17,6 +17,12 @@ const initialFriends = [
     image: "https://i.pravatar.cc/48?u=499476",
     balance: 0,
   },
+  {
+    id: 12345,
+    name: "Farhan",
+    image: "https://i.pravatar.cc/48?u=12345",
+    balance: 0,
+  },
 ];
 
 export default initialFriends;
